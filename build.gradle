@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://artifacts.openmicroscopy.org/artifactory/maven/'
+    }
+}
+
+dependencies {
+    implementation 'org.openmicroscopy:omero-gateway:5.8.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
+}
+
+application {
+    mainClass = 'Main'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
+
+shadowJar {
+    archiveBaseName.set('Testing')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+}
