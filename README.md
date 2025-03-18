@@ -1,31 +1,23 @@
-# OMERO Connection Example
+# Performance testing OMERO tile loading
 
-This project demonstrates how to connect to an OMERO server using the omero-gateway-java library.
+Set parameteres via environment variables:
 
-## Prerequisites
-
-- Java 11 or later
-- Gradle
-- Access to an OMERO server
-
-## Setup
-
-1. Update the connection details in `src/main/java/com/example/omero/OmeroConnect.java`:
-   - username
-   - password
-   - host
-   - port
-
-## Building and Running
-
-To build and run the project:
-
-```bash
-./gradlew run
+```
+USERNAME (default: "public")
+PASSWORD (default: "public")
+HOST (default: "localhost")
+PORT (default: "4064")
+THREADS (default: "5")
+SCREEN (default: null)  <- required
+WIDTH (default: "512")
+HEIGHT (default: "512")
+TEST (default: "RoundtripTest")
+IMAGE_COUNT (default: "100")
 ```
 
-To build only:
+For example, to run with custom settings:
 
-```bash
-./gradlew build
 ```
+WIDTH=1280 HEIGHT=1024 TEST=LoadTileTest SCREEN=2001 java -jar Testing.jar
+```
+
